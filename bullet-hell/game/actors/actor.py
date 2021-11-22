@@ -29,6 +29,13 @@ class Actor:
         self._width = 0
         self._height = 0
         self._image = ""
+        self._is_on_screen = False
+    
+    def set_on_screen(self, status):
+        self._is_on_screen = status
+
+    def is_on_screen(self):
+        return self._is_on_screen
 
     def get_width(self):
         return self._width

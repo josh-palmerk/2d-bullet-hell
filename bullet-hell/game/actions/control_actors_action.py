@@ -1,0 +1,21 @@
+from game.actions.action import Action
+from game import constants
+from game.point import Point
+from game import game_balance as gb
+
+class ControlActorsAction(Action):
+    """
+    Child of Action that imposes player input onto the paddle's velocity.
+    """
+    def __init__(self, input_service) -> None:
+        super().__init__()
+        self._input_service = input_service
+
+    def execute(self, cast):
+        player = cast["player"][0]
+
+        direction = self._input_service.get_direction()
+        speed = Point((direction.get_x() * gb.PLAYER_SPEED), direction.get_y() * gb.PLAYER_SPEED)
+
+        player.set_velocity(speed)
+    
