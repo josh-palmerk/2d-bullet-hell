@@ -29,6 +29,8 @@ class HandleCollisionsAction(Action):
                     player.add_health(-bullet.get_damage())
                     cast["UI"][0].set_text(str(player.get_health()))
 
+                    # TODO add effects here like I frames or other things to trigger on hit
+
                     cast["bullets"].pop(q)
                     q -= 1
                     
@@ -37,6 +39,12 @@ class HandleCollisionsAction(Action):
                 if self._physics_service.is_collision(enemy, bullet):
                     if bullet.hurts_enemies():
                         enemy.add_health(-bullet.get_damage())
+
+                        # TODO add other things here on enemy hit
+
+                        # if bullet has pierce dont pop it?? potential feature
+                        cast["bullets"].pop(q)
+                        q -= 1
 
             q += 1
 
