@@ -34,7 +34,7 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """ 
         raylibpy.begin_drawing()
-        raylibpy.clear_background(raylibpy.BLACK)
+        raylibpy.clear_background(raylibpy.WHITE)
 
     def draw_box(self, x, y, width, height):
         """

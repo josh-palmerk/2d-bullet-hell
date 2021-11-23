@@ -16,30 +16,56 @@ class HandleCollisionsAction(Action):
         self._audio_service = AudioService()
 
     def execute(self, cast):
-        balls = cast["balls"]
-        paddle = cast["paddle"][0]
-        bricks = cast["bricks"]
+        """ deez nuts """
+        player = cast["player"][0]
+        enemies = cast["enemies"]
+        bullets = cast["bullets"]
 
-        for ball in balls:
-            if self._physics_service.is_collision(paddle, ball):
-                vel = ball.get_velocity()
-                new_vel = self.bounce_vertical(vel)
-                ball.set_velocity(new_vel)
-                self._audio_service.play_sound(constants.SOUND_BOUNCE)
-            q = 0
-            for i in range(len(bricks)):
-                brick = bricks[q]
-                if self._physics_service.is_collision(ball, brick):
-                    vel = ball.get_velocity()
-                    new_vel = self.bounce_vertical(vel)
-                    ball.set_velocity(new_vel)
+        q = 0
+        for bullet in bullets:
+            
+            if self._physics_service.is_collision(player, bullet):
+                if bullet.hurts_player():
+                    player.add_health(-bullet.get_damage())
+                    cast["UI"][0].set_text(str(player.get_health()))
 
-                    self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    cast["bricks"].pop(q)
+                    cast["bullets"].pop(q)
                     q -= 1
-                q += 1
-            if ball.get_position().get_y() >= (constants.MAX_Y - constants.BALL_HEIGHT):
-                cast["balls"].remove(ball)
+                    
+
+            for enemy in enemies:
+                if self._physics_service.is_collision(enemy, bullet):
+                    if bullet.hurts_enemies():
+                        enemy.add_health(-bullet.get_damage())
+
+            q += 1
+
+
+
+        # balls = cast["balls"]
+        # paddle = cast["paddle"][0]
+        # bricks = cast["bricks"]
+
+        # for ball in balls:
+        #     if self._physics_service.is_collision(paddle, ball):
+        #         vel = ball.get_velocity()
+        #         new_vel = self.bounce_vertical(vel)
+        #         ball.set_velocity(new_vel)
+        #         self._audio_service.play_sound(constants.SOUND_BOUNCE)
+        #     q = 0
+        #     for i in range(len(bricks)):
+        #         brick = bricks[q]
+        #         if self._physics_service.is_collision(ball, brick):
+        #             vel = ball.get_velocity()
+        #             new_vel = self.bounce_vertical(vel)
+        #             ball.set_velocity(new_vel)
+
+        #             self._audio_service.play_sound(constants.SOUND_BOUNCE)
+        #             cast["bricks"].pop(q)
+        #             q -= 1
+        #         q += 1
+        #     if ball.get_position().get_y() >= (constants.MAX_Y - constants.BALL_HEIGHT):
+        #         cast["balls"].remove(ball)
             
 
 
