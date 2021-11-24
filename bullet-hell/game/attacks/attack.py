@@ -1,6 +1,17 @@
+class Attack:
+    """A code template for an attack. 
+    
+    Stereotype:
+        Controller
 
-class Attack():
-    def __init__(self) -> None:
-        """ Attack """
+    Attributes: ???
+        _tag (string): The action tag (input, update or output).
+    """
 
-        #idek
+    def spawn_attack(self, cast, target, speed, position, hurt):
+        """Executes the attack.
+
+        Args:
+            cast (dict): The game actors {key: tag, value: list}. 
+        """
+        raise NotImplementedError("spawn_attack not implemented in superclass")

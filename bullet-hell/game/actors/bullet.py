@@ -23,6 +23,7 @@ class Bullet(Actor):
         self._height = constants.BULLET_HEIGHT
         self._width = constants.BULLET_WIDTH
         self._damage = gb.DEFAULT_BULLET_DAMAGE
+        self._color = constants.BULLET_COLOR
 
     def hurts_player(self):
         return self._hurts_player

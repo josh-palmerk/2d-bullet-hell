@@ -42,7 +42,8 @@ class HandleCollisionsAction(Action):
 
                         # TODO add other things here on enemy hit
 
-                        # if bullet has pierce dont pop it?? potential feature
+                        # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
+                        # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
                         cast["bullets"].pop(q)
                         q -= 1
 

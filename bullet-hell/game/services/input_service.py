@@ -60,7 +60,12 @@ class InputService:
     def is_down_pressed(self):
         return raylibpy.is_key_down(raylibpy.KEY_DOWN)
 
+    def get_mouse_position(self):
+        pos = raylibpy.get_mouse_position()
+        return Point(pos.x, pos.y)
 
+    def get_mouse_1(self):
+        return raylibpy.is_mouse_button_pressed(raylibpy.MOUSE_LEFT_BUTTON)
 
     def window_should_close(self):
         return raylibpy.window_should_close()

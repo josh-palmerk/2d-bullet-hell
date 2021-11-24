@@ -18,4 +18,7 @@ class ControlActorsAction(Action):
         speed = Point((direction.get_x() * gb.PLAYER_SPEED), direction.get_y() * gb.PLAYER_SPEED)
 
         player.set_velocity(speed)
+
+        player.set_is_attacking_1(self._input_service.get_mouse_1())
+        player.set_target(self._input_service.get_mouse_position())
     

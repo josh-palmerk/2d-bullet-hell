@@ -30,12 +30,31 @@ class Actor:
         self._height = 0
         self._image = ""
         self._is_on_screen = False
+        self._color = constants.DEFAULT_ACTOR_COLOR
     
+    def home_to_target(self, target, speed):
+        """ Sets velocity to be towards a Point at a given speed.
+        Args:
+            target: the Point that marks the "target".
+            speed: int/float that indicates speed of travel at this given angle
+        """
+        difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
+        larger = max(abs(difference.get_x()), abs(difference.get_y()))
+        difference.scale((1 / larger))
+        difference.scale(speed)
+        self._velocity = difference
+
     def set_on_screen(self, status):
         self._is_on_screen = status
 
     def is_on_screen(self):
         return self._is_on_screen
+
+    def get_color(self):
+        return self._color
+
+    def set_color(self, color):
+        self._color = color
 
     def get_width(self):
         return self._width
