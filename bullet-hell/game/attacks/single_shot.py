@@ -8,7 +8,7 @@ class SingleShot(Attack):
 
         self._hurt = hurt
 
-    def spawn_attack(self, cast, target, speed, position):
+    def spawn_attack(self, cast, attacker):
         """
         Creates a single-shot attack.
 
@@ -22,10 +22,11 @@ class SingleShot(Attack):
         # bullets = cast["bullets"]
 
         shot = Bullet(self._hurt)
-
-        shot.home_to_target(target, speed)
+        shot.set_position(attacker.get_position())
+        
+        shot.home_to_target(attacker.get_target(), attacker.get_bullet_speed())
 
         # offset_pos = Point((position.get_x() + (direction.get_x() * 2)), (position.get_x() + (direction.get_y() * 2)))
-        shot.set_position(position)
+        
 
         cast["bullets"].append(shot)

@@ -46,6 +46,9 @@ class HandleCollisionsAction(Action):
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
                         cast["bullets"].pop(q)
                         q -= 1
+                
+                if enemy.get_health() <= 0:
+                    """kill enemy here""" #TODO
 
             q += 1
 

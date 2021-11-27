@@ -39,8 +39,13 @@ class Actor:
             speed: int/float that indicates speed of travel at this given angle
         """
         difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
-        larger = max(abs(difference.get_x()), abs(difference.get_y()))
-        difference.scale((1 / larger))
+        # larger = max(abs(difference.get_x()), abs(difference.get_y()))
+        if abs(difference.get_x()) > abs(difference.get_y()):
+            larger = difference.get_x()
+        else:
+            larger = difference.get_y()
+        if self._position.equals(target) == False:
+            difference.scale((1 / larger))
         difference.scale(speed)
         self._velocity = difference
 

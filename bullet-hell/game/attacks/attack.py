@@ -8,7 +8,7 @@ class Attack:
         _tag (string): The action tag (input, update or output).
     """
 
-    def spawn_attack(self, cast, target, speed, position, hurt):
+    def spawn_attack(self, cast, attacker):
         """Executes the attack.
 
         Args:

@@ -10,25 +10,24 @@ class HandleOffScreenAction(Action):
         super().__init__()
     
     def execute(self, cast):
-        balls = cast["balls"]
+        bullets = cast["bullets"]
+        q = 0
+        for bullet in bullets:
+            pos = bullet.get_position()
+            if pos.get_x() <= 0 or pos.get_x() >= constants.MAX_X:
+                cast["bullets"].pop(q)
+                q -= 1
+            elif pos.get_y() <= 0 or pos.get_y() >= constants.MAX_Y:
+                cast["bullets"].pop(q)
+                q -= 1
+            q += 1
 
-        for ball in balls:
-            pos = ball.get_position()
-            vel = ball.get_velocity()
-            if pos.get_x() <= 0 or pos.get_x() >= (constants.MAX_X - constants.BALL_WIDTH):
-               vel = self.bounce_horizontal(vel)
-            if pos.get_y() <= 0: # or pos.get_y() >= (constants.MAX_Y - constants.BALL_HEIGHT):
-                vel = self.bounce_vertical(vel)
-            ball.set_velocity(vel)
+    # def bounce_horizontal(self, point):
+    #     """ Returns Point() with x velocity flipped """
+    #     new = Point((point.get_x() * -1), point.get_y())
+    #     return new
 
-        #return super().execute(cast)
-
-    def bounce_horizontal(self, point):
-        """ Returns Point() with x velocity flipped """
-        new = Point((point.get_x() * -1), point.get_y())
-        return new
-
-    def bounce_vertical(self, point):
-        """ Returns Point() with y velocity flipped """
-        new = Point(point.get_x(), (point.get_y() * -1))
-        return new
+    # def bounce_vertical(self, point):
+    #     """ Returns Point() with y velocity flipped """
+    #     new = Point(point.get_x(), (point.get_y() * -1))
+    #     return new

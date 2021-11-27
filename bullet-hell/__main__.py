@@ -24,7 +24,7 @@ from game.services.audio_service import AudioService
 from game.actions.draw_actors_action import DrawActorsAction
 from game.actions.control_actors_action import ControlActorsAction
 from game.actions.handle_collisions_action import HandleCollisionsAction
-# from game.actions.handle_off_screen_action import HandleOffScreenAction
+from game.actions.handle_off_screen_action import HandleOffScreenAction
 from game.actions.move_actors_action import MoveActorsAction
 from game.actions.do_attacks_action import DoAttacksAction
 
@@ -69,7 +69,7 @@ def main():
 
     draw_actors_action = DrawActorsAction(output_service)
     move_actors_action = MoveActorsAction()
-    # handle_offscreen_action = HandleOffScreenAction()
+    handle_offscreen_action = HandleOffScreenAction()
     control_actors_action = ControlActorsAction(input_service)
     handle_collisions_action = HandleCollisionsAction(physics_service)
     do_attacks_action = DoAttacksAction()
@@ -77,7 +77,7 @@ def main():
 
     """ Define actions in each script piece """
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_action, do_attacks_action]
+    script["update"] = [move_actors_action, handle_collisions_action, do_attacks_action, handle_offscreen_action]
     script["output"] = [draw_actors_action]
 
 
