@@ -31,6 +31,17 @@ class Actor:
         self._image = ""
         self._is_on_screen = False
         self._color = constants.DEFAULT_ACTOR_COLOR
+        self._counter = 0
+
+    def set_counter(self, value):
+        self._counter = value
+
+    def increment_counter(self, value):
+        """ just a += """
+        self._counter += value
+
+    def get_counter(self):
+        return self._counter
     
     def home_to_target(self, target, speed):
         """ Sets velocity to be towards a Point at a given speed.

@@ -19,4 +19,7 @@ class MoveActorsAction(Action):
 
         for actor in cast["enemies"]:
             actor.move_next()
+
+        cast["UI"][1].increment_counter(1)
+        cast["UI"][1].set_text(str(cast["UI"][1].get_counter()))
         

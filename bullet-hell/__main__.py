@@ -58,6 +58,14 @@ def main():
     health_board.set_position(Point(300, 10))
     cast["UI"].append(health_board)
 
+    
+    timer = Actor()
+    timer.set_text(str(0))
+    timer.set_position(Point(500, 10))
+    cast["UI"].append(timer)
+
+
+
     # Create the script {key: tag, value: list}
     script = {}
 
