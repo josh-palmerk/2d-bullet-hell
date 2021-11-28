@@ -21,7 +21,6 @@ class HandleCollisionsAction(Action):
         enemies = cast["enemies"]
         bullets = cast["bullets"]
 
-        q = 0
         for bullet in bullets:
             
             if self._physics_service.is_collision(player, bullet):
@@ -31,8 +30,7 @@ class HandleCollisionsAction(Action):
 
                     # TODO add effects here like I frames or other things to trigger on hit
 
-                    cast["bullets"].pop(q)
-                    q -= 1
+                    cast["bullets"].remove(bullet)
                     
 
             for enemy in enemies:
@@ -44,13 +42,11 @@ class HandleCollisionsAction(Action):
 
                         # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
-                        cast["bullets"].pop(q)
-                        q -= 1
+                        cast["bullets"].remove(bullet)
                 
                 if enemy.get_health() <= 0:
-                    """kill enemy here""" #TODO
+                    cast["enemies"].remove(enemy)
 
-            q += 1
 
 
 

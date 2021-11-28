@@ -12,7 +12,7 @@ from game.point import Point
 from game.actors.actor import Actor
 from game.actors.player import Player
 from game.actors.bullet import Bullet
-
+from game.enemies.enemy import Enemy
 
 """ Services """
 from game.services.input_service import InputService
@@ -37,6 +37,9 @@ def main():
     cast["player"].append(Player())
 
     cast["enemies"] = []
+    enemy1 = Enemy()
+    enemy1.set_position(Point(500, 500))
+    cast["enemies"].append(enemy1)
 
     cast["bullets"] = []
     test_bullet = Bullet("p")
