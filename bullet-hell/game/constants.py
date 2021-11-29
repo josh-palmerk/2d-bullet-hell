@@ -3,7 +3,7 @@ import raylibpy
 
 MAX_X = 1920
 MAX_Y = 1080
-FRAME_RATE = 30
+FRAME_RATE = 60
 
 """ Arrow Keys """
 # MOVE_LEFT = raylibpy.KEY_LEFT
@@ -35,7 +35,7 @@ ENEMY_WIDTH = 20
 ENEMY_COLOR = raylibpy.RED
 
 
-MAX_BULLET_SPEED = 10
+# MAX_BULLET_SPEED = 10
 # PLAYER_BULLET_SPEED = 20
 # ENEMY_BULLET_SPEED = 10
 

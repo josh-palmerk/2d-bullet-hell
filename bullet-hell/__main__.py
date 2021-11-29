@@ -13,6 +13,7 @@ from game.actors.actor import Actor
 from game.actors.player import Player
 from game.actors.bullet import Bullet
 from game.enemies.enemy import Enemy
+from game.enemies.dummy import Dummy
 
 """ Services """
 from game.services.input_service import InputService
@@ -27,6 +28,7 @@ from game.actions.handle_collisions_action import HandleCollisionsAction
 from game.actions.handle_off_screen_action import HandleOffScreenAction
 from game.actions.move_actors_action import MoveActorsAction
 from game.actions.do_attacks_action import DoAttacksAction
+from game.actions.update_movements_action import UpdateMovementsAction
 
 def main():
 
@@ -40,6 +42,10 @@ def main():
     enemy1 = Enemy()
     enemy1.set_position(Point(500, 500))
     cast["enemies"].append(enemy1)
+
+    dummy1 = Dummy()
+    dummy1.set_position(Point(300, 700))
+    cast["enemies"].append(dummy1)
 
     cast["bullets"] = []
     test_bullet = Bullet("p")
@@ -84,11 +90,11 @@ def main():
     control_actors_action = ControlActorsAction(input_service)
     handle_collisions_action = HandleCollisionsAction(physics_service)
     do_attacks_action = DoAttacksAction()
-
+    update_movements_action = UpdateMovementsAction()
 
     """ Define actions in each script piece """
     script["input"] = [control_actors_action]
-    script["update"] = [do_attacks_action, move_actors_action, handle_collisions_action, handle_offscreen_action]
+    script["update"] = [do_attacks_action, handle_collisions_action, handle_offscreen_action, update_movements_action, move_actors_action]
     script["output"] = [draw_actors_action]
 
 

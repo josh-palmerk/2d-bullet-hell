@@ -1,4 +1,5 @@
-class Attack:
+from game.attacks.motion import Motion
+class Attack(Motion):
     """A code template for an attack. 
     
     Stereotype:

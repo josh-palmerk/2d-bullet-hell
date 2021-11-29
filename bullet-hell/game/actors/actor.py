@@ -101,6 +101,13 @@ class Actor:
     def get_bottom_edge(self):
         return self._position.get_y() + self._height
 
+    def get_center_position(self):
+        """ Returns Point with the position of the center of the rectangular actor. """
+        x = self._position.get_x() + (self._width / 2)
+        y = self._position.get_y() + (self._height / 2)
+        return Point(x, y)
+
+
     def get_position(self):
         """Gets the actor's position in 2d space.
         
