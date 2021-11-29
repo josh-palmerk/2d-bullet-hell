@@ -5,7 +5,7 @@ from game import game_balance as gb
 
 class ControlActorsAction(Action):
     """
-    Child of Action that imposes player input onto the paddle's velocity.
+    Child of Action that imposes player input onto the player's velocity.
     """
     def __init__(self, input_service) -> None:
         super().__init__()
@@ -15,9 +15,6 @@ class ControlActorsAction(Action):
         player = cast["player"][0]
 
         direction = self._input_service.get_direction()
-        # speed = Point((direction.get_x() * gb.PLAYER_SPEED), direction.get_y() * gb.PLAYER_SPEED)
-
-        # player.set_velocity(speed)
         direction = direction.add(player.get_position())
         player.vect_to_target(direction, gb.PLAYER_SPEED)
 
