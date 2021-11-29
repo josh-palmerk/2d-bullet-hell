@@ -1,6 +1,7 @@
 import sys
 from game.point import Point
 import raylibpy
+from game import constants
 
 class InputService:
     """Detects player input. The responsibility of the class of objects is to detect player keypresses and translate them into a point representing a direction (or velocity).
@@ -49,23 +50,30 @@ class InputService:
         return direction
 
     def is_left_pressed(self):
-        return raylibpy.is_key_down(raylibpy.KEY_LEFT)
+        return raylibpy.is_key_down(constants.MOVE_LEFT)
 
     def is_right_pressed(self):
-        return raylibpy.is_key_down(raylibpy.KEY_RIGHT)
+        return raylibpy.is_key_down(constants.MOVE_RIGHT)
 
     def is_up_pressed(self):
-        return raylibpy.is_key_down(raylibpy.KEY_UP)
+        return raylibpy.is_key_down(constants.MOVE_UP)
 
     def is_down_pressed(self):
-        return raylibpy.is_key_down(raylibpy.KEY_DOWN)
+        return raylibpy.is_key_down(constants.MOVE_DOWN)
+
+    def is_pause_pressed(self):
+        return raylibpy.is_key_down(constants.PAUSE_KEY)
+
 
     def get_mouse_position(self):
         pos = raylibpy.get_mouse_position()
         return Point(pos.x, pos.y)
 
     def get_mouse_1(self):
-        return raylibpy.is_mouse_button_pressed(raylibpy.MOUSE_LEFT_BUTTON)
+        return raylibpy.is_mouse_button_pressed(constants.ATK1_KEY)
+
+    def get_mouse_2(self):
+        return raylibpy.is_mouse_button_pressed(constants.ATK2_KEY)
 
     def window_should_close(self):
         return raylibpy.window_should_close()

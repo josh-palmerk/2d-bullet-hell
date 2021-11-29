@@ -5,7 +5,24 @@ MAX_X = 1920
 MAX_Y = 1080
 FRAME_RATE = 30
 
+""" Arrow Keys """
+# MOVE_LEFT = raylibpy.KEY_LEFT
+# MOVE_RIGHT = raylibpy.KEY_RIGHT
+# MOVE_UP = raylibpy.KEY_UP
+# MOVE_DOWN = raylibpy.KEY_DOWN
 
+""" WASD controls """
+MOVE_LEFT = raylibpy.KEY_A
+MOVE_RIGHT = raylibpy.KEY_D
+MOVE_UP = raylibpy.KEY_W
+MOVE_DOWN = raylibpy.KEY_S
+
+""" Other Controls """
+ATK1_KEY = raylibpy.MOUSE_LEFT_BUTTON
+ATK2_KEY = raylibpy.MOUSE_RIGHT_BUTTON
+PAUSE_KEY = raylibpy.KEY_ESCAPE
+
+""" Scale & Size Settings """
 BULLET_HEIGHT = 8
 BULLET_WIDTH = 8
 
