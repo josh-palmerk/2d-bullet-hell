@@ -24,7 +24,8 @@ class SingleShot(Attack):
         shot = Bullet(self._hurt)
         shot.set_position(attacker.get_position())
         
-        shot.home_to_target(attacker.get_target(), attacker.get_bullet_speed())
+        shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed())
+        # shot.home_to_target(attacker.get_target(), attacker.get_bullet_speed())
 
         # offset_pos = Point((position.get_x() + (direction.get_x() * 2)), (position.get_x() + (direction.get_y() * 2)))
         

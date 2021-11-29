@@ -88,7 +88,7 @@ def main():
 
     """ Define actions in each script piece """
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_action, do_attacks_action, handle_offscreen_action]
+    script["update"] = [do_attacks_action, move_actors_action, handle_collisions_action, handle_offscreen_action]
     script["output"] = [draw_actors_action]
 
 

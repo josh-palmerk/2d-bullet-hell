@@ -1,5 +1,6 @@
 from game import constants
 from game.point import Point
+import math
 
 class Actor:
     """A visible, moveable thing that participates in the game. The responsibility of Actor is to keep track of its appearance, position 
@@ -43,6 +44,22 @@ class Actor:
     def get_counter(self):
         return self._counter
     
+    def vect_to_target(self, target, speed):
+        difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
+        if difference.equals(Point(0, 0)):
+            difference = Point(1, 0)
+        radius = self.make_radius(difference)
+        new_x = (difference.get_x() / radius)
+        new_y = (difference.get_y() / radius)
+        new_vect = Point(new_x * speed, new_y * speed)
+        #new_vect.scale(100)
+        self._velocity = new_vect
+
+    def make_radius(self, vector):
+        radius = math.sqrt((vector.get_x() ** 2) + (vector.get_y() ** 2))
+        return radius
+
+
     def home_to_target(self, target, speed):
         """ Sets velocity to be towards a Point at a given speed.
         Args:

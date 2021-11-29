@@ -1,8 +1,8 @@
 import os
 import raylibpy
 
-MAX_X = 800
-MAX_Y = 600
+MAX_X = 1920
+MAX_Y = 1080
 FRAME_RATE = 30
 
 
@@ -17,6 +17,8 @@ ENEMY_HEIGHT = 20
 ENEMY_WIDTH = 20
 ENEMY_COLOR = raylibpy.RED
 
+
+MAX_BULLET_SPEED = 10
 # PLAYER_BULLET_SPEED = 20
 # ENEMY_BULLET_SPEED = 10
 
