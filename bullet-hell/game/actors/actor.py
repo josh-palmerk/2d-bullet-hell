@@ -47,35 +47,17 @@ class Actor:
     def vect_to_target(self, target, speed):
         difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
         if difference.equals(Point(0, 0)):
-            difference = Point(1, 0)
+            self._velocity = difference
+            return
         radius = self.make_radius(difference)
         new_x = (difference.get_x() / radius)
         new_y = (difference.get_y() / radius)
         new_vect = Point(new_x * speed, new_y * speed)
-        #new_vect.scale(100)
         self._velocity = new_vect
 
     def make_radius(self, vector):
         radius = math.sqrt((vector.get_x() ** 2) + (vector.get_y() ** 2))
         return radius
-
-
-    def home_to_target(self, target, speed):
-        """ Sets velocity to be towards a Point at a given speed.
-        Args:
-            target: the Point that marks the "target".
-            speed: int/float that indicates speed of travel at this given angle
-        """
-        difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
-        # larger = max(abs(difference.get_x()), abs(difference.get_y()))
-        if abs(difference.get_x()) > abs(difference.get_y()):
-            larger = difference.get_x()
-        else:
-            larger = difference.get_y()
-        if self._position.equals(target) == False:
-            difference.scale((1 / larger))
-        difference.scale(speed)
-        self._velocity = difference
 
     def set_on_screen(self, status):
         self._is_on_screen = status
@@ -205,3 +187,23 @@ class Actor:
 
         position = Point(x, y)
         self._position = position
+
+
+
+
+    # def home_to_target(self, target, speed):
+    #     """ Sets velocity to be towards a Point at a given speed.
+    #     Args:
+    #         target: the Point that marks the "target".
+    #         speed: int/float that indicates speed of travel at this given angle
+    #     """
+    #     difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
+    #     # larger = max(abs(difference.get_x()), abs(difference.get_y()))
+    #     if abs(difference.get_x()) > abs(difference.get_y()):
+    #         larger = difference.get_x()
+    #     else:
+    #         larger = difference.get_y()
+    #     if self._position.equals(target) == False:
+    #         difference.scale((1 / larger))
+    #     difference.scale(speed)
+    #     self._velocity = difference

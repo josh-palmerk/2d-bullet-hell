@@ -16,11 +16,6 @@ class MoveActorsAction(Action):
             actor.move_next()
         
         for actor in cast["bullets"]:
-            # if actor.get_velocity().get_x() > constants.MAX_BULLET_SPEED or actor.get_velocity().get_y() > constants.MAX_BULLET_SPEED:
-            #     vel = actor.get_velocity()
-            #     new_vel = vel.scale((1 / max(abs(vel.get_x()), abs(vel.get_y()))))
-            #     new_vel.scale(gb.PLAYER_BULLET_SPEED)
-            #     actor.set_velocity(new_vel)
             actor.move_next()
 
         for actor in cast["enemies"]:

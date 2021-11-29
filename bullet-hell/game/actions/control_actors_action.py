@@ -15,9 +15,11 @@ class ControlActorsAction(Action):
         player = cast["player"][0]
 
         direction = self._input_service.get_direction()
-        speed = Point((direction.get_x() * gb.PLAYER_SPEED), direction.get_y() * gb.PLAYER_SPEED)
+        # speed = Point((direction.get_x() * gb.PLAYER_SPEED), direction.get_y() * gb.PLAYER_SPEED)
 
-        player.set_velocity(speed)
+        # player.set_velocity(speed)
+        direction = direction.add(player.get_position())
+        player.vect_to_target(direction, gb.PLAYER_SPEED)
 
         player.set_is_attacking_1(self._input_service.get_mouse_1())
         player.set_target(self._input_service.get_mouse_position())
