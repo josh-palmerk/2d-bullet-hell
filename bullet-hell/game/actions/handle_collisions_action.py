@@ -30,8 +30,8 @@ class HandleCollisionsAction(Action):
                     cast["UI"][0].set_text(str(player.get_health()))
 
                     # TODO add effects here like I frames or other things to trigger on hit
-
-                    cast["bullets"].remove(bullet)
+                    if not player.is_dodging():
+                        cast["bullets"].remove(bullet)
                     
 
             for enemy in enemies:
