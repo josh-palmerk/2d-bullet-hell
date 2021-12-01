@@ -3,6 +3,7 @@ from game import game_balance as gb
 from game import constants
 from game.attacks.single_shot import SingleShot
 # from game.point import Point
+from game.attacks.dodge_roll import DodgeRoll
 
 class Player(Person):
     def __init__(self):
@@ -16,3 +17,4 @@ class Player(Person):
         
         self._attack_1 = SingleShot("e")
         self._bullet_speed = gb.PLAYER_BULLET_SPEED
+        self._motion_1 = DodgeRoll(self)

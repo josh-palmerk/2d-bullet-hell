@@ -15,7 +15,7 @@ class DoAttacksAction(Action):
         
         for attacker in enemies:
             if isinstance(attacker, Dummy): #dummy should target just one consistent direction
-                attacker.set_target(Point(attacker.get_position().get_x() + 1, attacker.get_position().get_y()))
+                attacker.set_target(Point(attacker.get_position().get_x() + 5, attacker.get_position().get_y()))
             else:
                 attacker.set_target(player.get_center_position()) 
             attacker.roll_attack_chance_1() 

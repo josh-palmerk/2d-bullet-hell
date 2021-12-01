@@ -66,6 +66,9 @@ class InputService:
     def is_pause_pressed(self):
         return raylibpy.is_key_down(constants.PAUSE_KEY)
 
+    def is_dodge_pressed(self):
+        return raylibpy.is_key_down(constants.DODGE_KEY)
+
 
     def get_mouse_position(self):
         pos = raylibpy.get_mouse_position()

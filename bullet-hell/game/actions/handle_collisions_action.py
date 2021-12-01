@@ -25,7 +25,8 @@ class HandleCollisionsAction(Action):
             
             if self._physics_service.is_collision(player, bullet):
                 if bullet.hurts_player():
-                    player.add_health(-bullet.get_damage())
+                    if not player.is_invincible():
+                        player.add_health(-bullet.get_damage())
                     cast["UI"][0].set_text(str(player.get_health()))
 
                     # TODO add effects here like I frames or other things to trigger on hit
@@ -36,7 +37,8 @@ class HandleCollisionsAction(Action):
             for enemy in enemies:
                 if self._physics_service.is_collision(enemy, bullet):
                     if bullet.hurts_enemies():
-                        enemy.add_health(-bullet.get_damage())
+                        if not enemy.is_invincible():
+                            enemy.add_health(-bullet.get_damage())
 
                         # TODO add other things here on enemy hit
 

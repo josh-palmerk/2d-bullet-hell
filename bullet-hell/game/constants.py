@@ -21,6 +21,7 @@ MOVE_DOWN = raylibpy.KEY_S
 ATK1_KEY = raylibpy.MOUSE_LEFT_BUTTON
 ATK2_KEY = raylibpy.MOUSE_RIGHT_BUTTON
 PAUSE_KEY = raylibpy.KEY_ESCAPE
+DODGE_KEY = raylibpy.KEY_SPACE
 
 """ Scale & Size Settings """
 BULLET_HEIGHT = 8

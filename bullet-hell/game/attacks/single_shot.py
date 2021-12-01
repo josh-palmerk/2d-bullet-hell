@@ -1,6 +1,6 @@
 from game.attacks.attack import Attack
 from game.actors.bullet import Bullet
-from game.point import Point
+# from game.point import Point
 
 class SingleShot(Attack):
     def __init__(self, hurt) -> None:
@@ -14,20 +14,17 @@ class SingleShot(Attack):
 
         Args:
             cast: dictionary of actors
-            direction: direction of bullet being fired. Should not exceed (1, 1)
+            attacker: instance of the attacking entity
+
+            direction: direction of bullet being fired
             speed: multiplied with direction vector
             position: current position of firing entity
             hurt: "p" "e" "pe"
         """
-        # bullets = cast["bullets"]
-
         shot = Bullet(self._hurt)
         shot.set_position(attacker.get_center_position())
-        
-        shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed())
-        # shot.home_to_target(attacker.get_target(), attacker.get_bullet_speed())
-
-        # offset_pos = Point((position.get_x() + (direction.get_x() * 2)), (position.get_x() + (direction.get_y() * 2)))
-        
-
+        shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed())        
         cast["bullets"].append(shot)
+
+        # attacker.set_is_attacking_1(False)
+

@@ -13,6 +13,27 @@ class Person(Actor):
         self._attack_1 = SingleShot("pe")
         self._bullet_speed = gb.PLAYER_BULLET_SPEED
         self._health = 0
+        self._motion_1 = None
+        self._is_motioning_1 = False
+        self._is_invincible = False
+
+    def is_invincible(self):
+        return self._is_invincible
+
+    def set_invincibility(self, tf):
+        self._is_invincible = tf
+
+    def set_motion_1(self, motion):
+        self._motion_1 = motion
+
+    def get_motion_1(self):
+        return self._motion_1
+
+    def is_motioning_1(self):
+        return self._is_motioning_1
+
+    def set_is_motioning_1(self, tf):
+        self._is_motioning_1 = tf
 
 
     def is_attacking_1(self):

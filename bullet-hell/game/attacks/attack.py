@@ -11,6 +11,7 @@ class Attack(Motion):
 
     def spawn_attack(self, cast, attacker):
         """Executes the attack.
+        REMEMBER TO SET IS_ATTACKING TO FALSE
 
         Args:
             cast (dict): The game actors {key: tag, value: list}. 
