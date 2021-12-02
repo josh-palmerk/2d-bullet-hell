@@ -23,4 +23,3 @@ class MoveActorsAction(Action):
 
         cast["UI"][1].increment_counter(1)
         cast["UI"][1].set_text(str(cast["UI"][1].get_counter()))
-        

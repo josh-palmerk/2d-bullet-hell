@@ -19,6 +19,7 @@ class Enemy(Person):
 
         self._attack_1 = SingleShot("p")
         self._attack_chance = gb.ENEMY_ATTACK_CHANCE
+        self._bullet_speed = gb.ENEMY_BULLET_SPEED
 
 
     def roll_attack_chance_1(self):
@@ -26,7 +27,7 @@ class Enemy(Person):
             self._is_attacking_1 = True
 
     def do_movement_pattern(self):
-        self.vect_to_target(self._target, self._movement_speed)
+        self._velocity = self.vect_to_target(self._target, self._movement_speed)
 
 
 # TODO add abstract do_attack_pattern and do_movement_pattern

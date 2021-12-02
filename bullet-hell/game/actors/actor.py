@@ -47,13 +47,12 @@ class Actor:
     def vect_to_target(self, target, speed):
         difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
         if difference.equals(Point(0, 0)):
-            self._velocity = difference
-            return
+            return difference
         radius = self.make_radius(difference)
         new_x = (difference.get_x() / radius)
         new_y = (difference.get_y() / radius)
         new_vect = Point(new_x * speed, new_y * speed)
-        self._velocity = new_vect
+        return new_vect
 
     def make_radius(self, vector):
         radius = math.sqrt((vector.get_x() ** 2) + (vector.get_y() ** 2))

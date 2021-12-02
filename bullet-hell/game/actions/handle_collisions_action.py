@@ -44,7 +44,11 @@ class HandleCollisionsAction(Action):
 
                         # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
-                        cast["bullets"].remove(bullet)
+                        try:
+                            cast["bullets"].remove(bullet)
+                        except ValueError:
+                            print("7593")
+                            pass
                 
                 if enemy.get_health() <= 0:
                     cast["enemies"].remove(enemy)

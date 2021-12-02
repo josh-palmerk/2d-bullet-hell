@@ -17,7 +17,7 @@ class ControlActorsAction(Action):
         if player.is_controllable():
             direction = self._input_service.get_direction()
             direction = direction.add(player.get_position())
-            player.vect_to_target(direction, gb.PLAYER_SPEED)
+            player.set_velocity(player.vect_to_target(direction, gb.PLAYER_SPEED))
 
             player.set_is_attacking_1(self._input_service.get_mouse_1())
             player.set_target(self._input_service.get_mouse_position())

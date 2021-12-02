@@ -23,7 +23,7 @@ class SingleShot(Attack):
         """
         shot = Bullet(self._hurt)
         shot.set_position(attacker.get_center_position())
-        shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed())        
+        shot.set_velocity(shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed()))    
         cast["bullets"].append(shot)
 
         # attacker.set_is_attacking_1(False)
