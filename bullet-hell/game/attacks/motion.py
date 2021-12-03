@@ -2,7 +2,7 @@
 class Motion():
     """ uh idk what im doing here """
     def __init__(self):
-        self._timer = 0
+        self._timer = -1
 
     def update(self):
         """ update all the things that need to happen on this frame """

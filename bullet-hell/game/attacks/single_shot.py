@@ -1,12 +1,31 @@
 from game.attacks.attack import Attack
 from game.actors.bullet import Bullet
 # from game.point import Point
+from game import game_balance as gb
 
 class SingleShot(Attack):
     def __init__(self, hurt) -> None:
         super().__init__()
-
+        self._shot_cooldown = gb.SINGLE_SHOT_COOLDOWN
         self._hurt = hurt
+
+    def update(self, cast, attacker):
+        if self._timer == self._shot_cooldown:
+            self.spawn_attack(cast, attacker) #TODO params
+            #self.decrement_timer(cast, attacker)
+
+
+        if self._timer > 0:
+            self.decrement_timer()
+            #return True
+
+        elif self._timer == 0:
+            self.decrement_timer()
+            #return False
+
+        if self._timer < 0 and attacker.is_attacking_1():
+            self.set_timer(self._shot_cooldown)
+            attacker.set_is_attacking_1(False)
 
     def spawn_attack(self, cast, attacker):
         """

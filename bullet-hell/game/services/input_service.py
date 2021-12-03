@@ -75,10 +75,10 @@ class InputService:
         return Point(pos.x, pos.y)
 
     def get_mouse_1(self):
-        return raylibpy.is_mouse_button_pressed(constants.ATK1_KEY)
+        return raylibpy.is_mouse_button_down(constants.ATK1_KEY)
 
     def get_mouse_2(self):
-        return raylibpy.is_mouse_button_pressed(constants.ATK2_KEY)
+        return raylibpy.is_mouse_button_down(constants.ATK2_KEY)
 
     def window_should_close(self):
         return raylibpy.window_should_close()
