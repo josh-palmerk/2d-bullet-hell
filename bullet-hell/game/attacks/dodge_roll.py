@@ -12,7 +12,7 @@ class DodgeRoll(Motion):
     def update(self):
         """ update the dodge roll """
         if self._timer == self._roll_length: # start dodge roll
-            self._player.set_color(constants.DEFAULT_ACTOR_COLOR)
+            self._player.set_color(constants.DODGE_DODGING_COLOR)
             self._player.set_invincibility(True)
             self._player.set_is_dodging(True)
             self._player.set_is_controllable(False)
@@ -22,7 +22,7 @@ class DodgeRoll(Motion):
         elif self._timer == self._roll_length - gb.DODGE_ROLL_DODGE_TIME: # dodge "hits ground" hence end invinc and half velocity
             self._player.set_invincibility(False)
             self._player.set_is_dodging(False)
-            self._player.set_color(constants.COLOR_PURPLE)
+            self._player.set_color(constants.DODGE_COOLDOWN_COLOR)
             self._player.set_velocity(self._player.get_velocity().scale(gb.DODGE_ROLL_SLOW_FACTOR))
 
         if self._timer > 0: # tick down the timer to 0

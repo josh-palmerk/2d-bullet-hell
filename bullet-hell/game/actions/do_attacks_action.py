@@ -10,10 +10,18 @@ class DoAttacksAction(Action):
         player = cast["player"][0]
         enemies = cast["enemies"]
 
-        player.get_attack_1().update(cast, player)
+        if self.determine_attack_1(player):
+            player.get_attack_1().update(cast, player)
         for enemy in enemies:
-            enemy.roll_attack_chance_1()
-            enemy.get_attack_1().update(cast, enemy)
+
+            if isinstance(enemy, Dummy): #dummy should target just one consistent direction
+                    enemy.set_target(Point(enemy.get_position().get_x() + 5, enemy.get_position().get_y()))
+            else:
+                enemy.set_target(player.get_center_position()) 
+
+            if self.determine_attack_1(enemy):
+                enemy.roll_attack_chance_1()
+                enemy.get_attack_1().update(cast, enemy)
 
         # if self.determine_attack_1(player):
         #     self.do_attack_1(player, cast)
@@ -30,7 +38,7 @@ class DoAttacksAction(Action):
             
 
     def determine_attack_1(self, attacker):
-            if attacker.is_attacking_1() and attacker.get_attack_1() is not None:
+            if attacker.get_attack_1() is not None:
                 return True
             else:
                 return False
