@@ -44,7 +44,34 @@ class Actor:
     def get_counter(self):
         return self._counter
     
+
+    def adjust_vector(self, vector, degrees, speed):
+        """Returns a Point object containing a unit vector in the direction of the given vector, adjusted by
+        the amount of degrees given. Scales by the given speed.
+        
+        Args:
+        self
+        target: Point object
+        degrees: number of degrees to move the angle, pos or neg int
+        speed: scale factor, int or float
+        """
+        theta = math.atan2(vector.get_y(), vector.get_x())
+        theta_d = math.degrees(theta)
+        theta_d += degrees
+        theta_r = math.radians(theta_d)
+        new_vect = Point(math.cos(theta_r), math.sin(theta_r))
+        new_vect = new_vect.scale(speed)
+        return new_vect
+
+
     def vect_to_target(self, target, speed):
+        """Returns a Point object containing a unit vector in the direction of the given target. Scales by the given speed.
+        
+        Args:
+            self
+            target: Point object
+            speed: scale factor, int or float
+        """
         difference = Point((target.get_x() - self._position.get_x()), (target.get_y() - self._position.get_y()))
         if difference.equals(Point(0, 0)):
             return difference
