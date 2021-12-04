@@ -3,6 +3,8 @@ from game import constants
 from game.attacks.single_shot import SingleShot
 from game.actors.person import Person
 from random import randint
+from game.attacks.sawed_off_shot import SawedOffShot
+
 
 class Enemy(Person):
     def __init__(self):
@@ -17,7 +19,7 @@ class Enemy(Person):
 
         self._movement_speed = gb.ENEMY_MOVE_SPEED
 
-        self._attack_1 = SingleShot("p")
+        self._attack_1 = SawedOffShot("p")
         self._attack_chance = gb.ENEMY_ATTACK_CHANCE
         self._bullet_speed = gb.ENEMY_BULLET_SPEED
 

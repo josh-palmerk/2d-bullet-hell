@@ -5,6 +5,7 @@ from game.attacks.single_shot import SingleShot
 from game.point import Point
 from game.attacks.dodge_roll import DodgeRoll
 from game.attacks.sawed_off_shot import SawedOffShot
+from game.attacks.circle_shot import CircleShot
 
 class Player(Person):
     def __init__(self):
@@ -17,7 +18,9 @@ class Player(Person):
         self._color = constants.PLAYER_COLOR
         
         #self._attack_1 = SingleShot("e")
-        self._attack_1 = SawedOffShot("e")
+        #self._attack_1 = SawedOffShot("e")
+        self._attack_1 = CircleShot("e")
+
         self._bullet_speed = gb.PLAYER_BULLET_SPEED
         self._motion_1 = DodgeRoll(self)
         self._is_dodging = False
