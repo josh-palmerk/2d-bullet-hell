@@ -11,6 +11,7 @@ class HandleOffScreenAction(Action):
     
     def execute(self, cast):
         bullets = cast["bullets"]
+        player = cast["player"][0]
         q = 0
         for bullet in bullets:
             pos = bullet.get_position()
@@ -21,6 +22,9 @@ class HandleOffScreenAction(Action):
                 cast["bullets"].pop(q)
                 q -= 1
             q += 1
+        origin = Point(0, 0)
+        if origin.get_quadrant(player.get_position()) != 1:
+            player.set_position(origin)
 
     # def bounce_horizontal(self, point):
     #     """ Returns Point() with x velocity flipped """

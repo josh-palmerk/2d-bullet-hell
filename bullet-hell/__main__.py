@@ -14,6 +14,7 @@ from game.actors.player import Player
 from game.actors.bullet import Bullet
 from game.enemies.enemy import Enemy
 from game.enemies.dummy import Dummy
+from game.actors.wall import Wall
 
 """ Services """
 from game.services.input_service import InputService
@@ -29,6 +30,7 @@ from game.actions.handle_off_screen_action import HandleOffScreenAction
 from game.actions.move_actors_action import MoveActorsAction
 from game.actions.do_attacks_action import DoAttacksAction
 from game.actions.update_movements_action import UpdateMovementsAction
+from game.actions.handle_walls_action import HandleWallsAction
 
 def main():
 
@@ -38,6 +40,7 @@ def main():
     cast["player"] = []
     cast["enemies"] = []
     cast["bullets"] = []
+    cast["walls"] = []
     cast["UI"] = []
 
 
@@ -46,15 +49,15 @@ def main():
 
     enemy1 = Enemy()
     enemy1.set_position(Point(500, 500))
-    cast["enemies"].append(enemy1)
+    #cast["enemies"].append(enemy1)
 
     enemy2 = Enemy()
     enemy2.set_position(Point(1200, 750))
-    cast["enemies"].append(enemy2)
+    #cast["enemies"].append(enemy2)
 
     enemy3 = Enemy()
     enemy3.set_position(Point(1800, 500))
-    cast["enemies"].append(enemy3)
+    #cast["enemies"].append(enemy3)
 
     dummy1 = Dummy()
     dummy1.set_position(Point(300, 700))
@@ -73,6 +76,13 @@ def main():
     test_bullet3.set_position(Point(300, 300))
     test_bullet3.set_velocity(Point(.25, 0))
     cast["bullets"].append(test_bullet3)
+
+
+    wall_1 = Wall()
+    wall_1.set_position(Point(400, 300))
+    wall_1.set_width(100)
+    wall_1.set_height(100)
+    cast["walls"].append(wall_1)
 
 
     health_board = Actor()
@@ -103,10 +113,11 @@ def main():
     handle_collisions_action = HandleCollisionsAction(physics_service)
     do_attacks_action = DoAttacksAction()
     update_movements_action = UpdateMovementsAction()
+    handle_walls_action = HandleWallsAction(physics_service)
 
     """ Define actions in each script piece """
     script["input"] = [control_actors_action]
-    script["update"] = [do_attacks_action, handle_collisions_action, handle_offscreen_action, update_movements_action, move_actors_action]
+    script["update"] = [do_attacks_action, handle_collisions_action, handle_offscreen_action, update_movements_action, handle_walls_action, move_actors_action]
     script["output"] = [draw_actors_action]
 
 

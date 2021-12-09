@@ -22,9 +22,8 @@ class HandleCollisionsAction(Action):
         bullets = cast["bullets"]
 
         for bullet in bullets:
-            
-            if self._physics_service.is_collision(player, bullet):
-                if bullet.hurts_player():
+            if bullet.hurts_player():
+                if self._physics_service.is_collision(player, bullet):
                     if not player.is_invincible():
                         player.add_health(-bullet.get_damage())
                     cast["UI"][0].set_text(str(player.get_health()))
@@ -32,11 +31,12 @@ class HandleCollisionsAction(Action):
                     # TODO add effects here like I frames or other things to trigger on hit
                     if not player.is_dodging():
                         cast["bullets"].remove(bullet)
+                        continue
                     
 
-            for enemy in enemies:
-                if self._physics_service.is_collision(enemy, bullet):
-                    if bullet.hurts_enemies():
+            if bullet.hurts_enemies():
+                for enemy in enemies:
+                    if self._physics_service.is_collision(enemy, bullet):
                         if not enemy.is_invincible():
                             enemy.add_health(-bullet.get_damage())
 
@@ -44,16 +44,13 @@ class HandleCollisionsAction(Action):
 
                         # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
-                        try:
+                        if bullet in cast["bullets"]:
                             cast["bullets"].remove(bullet)
-                        except ValueError:
-                            print("7593")
-                            pass
+
                 
-                if enemy.get_health() <= 0:
-                    cast["enemies"].remove(enemy)
-
-
+                    if enemy.get_health() <= 0:
+                        cast["enemies"].remove(enemy)
+                        continue
 
 
         # balls = cast["balls"]
@@ -83,12 +80,12 @@ class HandleCollisionsAction(Action):
             
 
 
-    def bounce_horizontal(self, point):
-        """ Returns Point() with x velocity flipped """
-        new = Point((point.get_x() * -1), point.get_y())
-        return new
+    # def bounce_horizontal(self, point):
+    #     """ Returns Point() with x velocity flipped """
+    #     new = Point((point.get_x() * -1), point.get_y())
+    #     return new
 
-    def bounce_vertical(self, point):
-        """ Returns Point() with y velocity flipped """
-        new = Point(point.get_x(), (point.get_y() * -1))
-        return new
+    # def bounce_vertical(self, point):
+    #     """ Returns Point() with y velocity flipped """
+    #     new = Point(point.get_x(), (point.get_y() * -1))
+    #     return new

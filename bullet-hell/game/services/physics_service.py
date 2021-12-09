@@ -1,4 +1,5 @@
 from game.actors.actor import Actor
+from game.point import Point
 import raylibpy
 
 class PhysicsService:
@@ -27,3 +28,25 @@ class PhysicsService:
         rectangle2 = raylibpy.Rectangle(x2, y2, width2, height2)
 
         return raylibpy.check_collision_recs(rectangle1, rectangle2)
+
+    def short_collision_side(self, first, second):
+        """ Returns a point object containing only the short side of the collision rectangle. """
+        x1 = first.get_position().get_x()
+        y1 = first.get_position().get_y()
+        width1 = first.get_width()
+        height1 = first.get_height()
+
+        rectangle1 = raylibpy.Rectangle(x1, y1, width1, height1)
+
+        x2 = second.get_position().get_x()
+        y2 = second.get_position().get_y()
+        width2 = second.get_width()
+        height2 = second.get_height()
+
+        rectangle2 = raylibpy.Rectangle(x2, y2, width2, height2)
+        rect = raylibpy.get_collision_rec(rectangle1, rectangle2)
+        
+        if min(rect.width, rect.height) == rect.width:
+            return Point(rect.width, 0)
+        else:
+            return Point(0, rect.height)

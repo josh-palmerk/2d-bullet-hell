@@ -35,13 +35,13 @@ class Director:
             self._cue_action("output")
 
             # TODO: Add some logic like the following to handle game over conditions
-            # if len(self._cast["balls"]) == 0:
-            #     print("You ran out of balls!\nGame over!")
-            #     self._keep_playing = False
+            if self._cast["player"][0].get_health() <= 0:
+                print("You ran out of health!\nGame over!")
+                self._keep_playing = False
 
-            # if len(self._cast["bricks"]) == 0:
-            #     print("You cleared all the bricks!\nYou win!!")
-            #     self._keep_playing = False
+            if len(self._cast["enemies"]) == 0:
+                print("You cleared all the enemies!\nYou win!!")
+                self._keep_playing = False
 
             if raylibpy.window_should_close():
                 self._keep_playing = False

@@ -98,3 +98,27 @@ class Point:
         Returns True if both the x and y coordinate are 0.
         """
         return self._x == 0 and self._y == 0
+
+    def is_negative(self):
+        """
+        Returns True if x < 0 and y < 0
+        """
+        return self._x < 0 and self._y < 0
+
+    def get_quadrant(self, other):
+        """ Returns int with quadrant other given point is in relative to self. 
+        Q1 == ++
+        Q2 == -+
+        Q3 == --
+        Q4 == +-
+        """
+        if self._x > other.get_x():
+            if self._y > other.get_y():
+                return 3
+            else:
+                return 2
+        else:
+            if self._y > other.get_y():
+                return 4
+            else:
+                return 1
