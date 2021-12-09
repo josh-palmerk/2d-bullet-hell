@@ -20,6 +20,7 @@ class HandleCollisionsAction(Action):
         player = cast["player"][0]
         enemies = cast["enemies"]
         bullets = cast["bullets"]
+        walls = cast["walls"]
 
         for bullet in bullets:
             if bullet.hurts_player():
@@ -51,6 +52,10 @@ class HandleCollisionsAction(Action):
                     if enemy.get_health() <= 0:
                         cast["enemies"].remove(enemy)
                         continue
+            
+            for wall in walls:
+                if self._physics_service.is_collision(wall, bullet):
+                    cast["bullets"].remove(bullet)
 
 
         # balls = cast["balls"]

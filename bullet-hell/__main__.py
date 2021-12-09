@@ -53,11 +53,11 @@ def main():
 
     enemy2 = Enemy()
     enemy2.set_position(Point(1200, 750))
-    #cast["enemies"].append(enemy2)
+    cast["enemies"].append(enemy2)
 
     enemy3 = Enemy()
     enemy3.set_position(Point(1800, 500))
-    #cast["enemies"].append(enemy3)
+    cast["enemies"].append(enemy3)
 
     dummy1 = Dummy()
     dummy1.set_position(Point(300, 700))
