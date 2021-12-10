@@ -122,3 +122,9 @@ class Point:
                 return 4
             else:
                 return 1
+
+    def get_difference(self, other):
+        """ Returns Point object containing the difference from this Point to the given one. """
+        diff_x = other.get_x() - self._x
+        diff_y = other.get_y() - self._y
+        return Point(diff_x, diff_y)

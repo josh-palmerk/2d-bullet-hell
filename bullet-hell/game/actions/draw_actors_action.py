@@ -1,3 +1,4 @@
+import raylibpy
 from game.actions.action import Action
 
 class DrawActorsAction(Action):
@@ -26,6 +27,21 @@ class DrawActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         self._output_service.clear_screen()
-        for group in cast.values():
-            self._output_service.draw_actors(group)
+        raylibpy.begin_mode2d(cast["camera"][0])
+
+        for actor in (cast["player"], cast["enemies"], cast["bullets"], cast["walls"]):
+            self._output_service.draw_actors(actor)
+
+        raylibpy.end_mode2d()
+
+        player = cast["player"][0]
+        camera = cast["camera"][0]
+        if not player.get_is_colliding_wall():
+            player_pos = player.get_center_position()
+            cam_target = raylibpy.Vector2(player_pos.get_x(), player_pos.get_y())
+            camera.target = cam_target
+            player_vel = player.get_velocity()
+            camera.offset.x -= player_vel.get_x()
+            camera.offset.y -= player_vel.get_y()
+
         self._output_service.flush_buffer()

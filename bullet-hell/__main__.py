@@ -1,5 +1,7 @@
 import os
 os.environ['RAYLIB_BIN_PATH'] = "."
+import raylibpy
+
 from random import randint
 
 """ Game """
@@ -31,6 +33,10 @@ from game.actions.move_actors_action import MoveActorsAction
 from game.actions.do_attacks_action import DoAttacksAction
 from game.actions.update_movements_action import UpdateMovementsAction
 from game.actions.handle_walls_action import HandleWallsAction
+from game.actions.game_events_action import GameEventsAction
+
+
+from game.levels.wall_configs.screenbox import ScreenBox
 
 def main():
 
@@ -42,10 +48,22 @@ def main():
     cast["bullets"] = []
     cast["walls"] = []
     cast["UI"] = []
+    cast["camera"] = []
 
 
-    cast["player"].append(Player())
 
+    player = Player()
+    player.set_position(Point(50, 50))
+    cast["player"].append(player)
+
+    player_pos = player.get_center_position()
+
+    camera = raylibpy.Camera2D()
+    cam_target = raylibpy.Vector2(player_pos.get_x(), player_pos.get_y())
+    camera.target = cam_target
+    camera.zoom = 1.5
+    camera.offset = raylibpy.Vector2((constants.MAX_X / 2), (constants.MAX_Y / 2))
+    cast["camera"].append(camera)
 
     enemy1 = Enemy()
     enemy1.set_position(Point(500, 500))
@@ -78,11 +96,15 @@ def main():
     cast["bullets"].append(test_bullet3)
 
 
-    wall_1 = Wall()
+    wall_1 = Wall() # test wall
     wall_1.set_position(Point(400, 300))
     wall_1.set_width(100)
     wall_1.set_height(100)
     cast["walls"].append(wall_1)
+
+
+    screenbox = ScreenBox()
+    screenbox.create_walls(cast)
 
 
     health_board = Actor()
@@ -114,10 +136,11 @@ def main():
     do_attacks_action = DoAttacksAction()
     update_movements_action = UpdateMovementsAction()
     handle_walls_action = HandleWallsAction(physics_service)
+    game_events_action = GameEventsAction()
 
     """ Define actions in each script piece """
     script["input"] = [control_actors_action]
-    script["update"] = [do_attacks_action, handle_collisions_action, handle_offscreen_action, update_movements_action, handle_walls_action, move_actors_action]
+    script["update"] = [do_attacks_action, handle_collisions_action, update_movements_action, handle_walls_action, move_actors_action, game_events_action]
     script["output"] = [draw_actors_action]
 
 
@@ -126,6 +149,11 @@ def main():
     audio_service.start_audio()
     # audio_service.play_sound(constants.SOUND_START)
     
+    cast["keep_playing"] = [] #this keeps gameloop running until set false
+    kp = Actor()
+    kp.set_counter(1)
+    cast["keep_playing"].append(kp)
+
     director = Director(cast, script)
     director.start_game()
 

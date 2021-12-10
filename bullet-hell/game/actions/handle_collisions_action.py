@@ -22,6 +22,7 @@ class HandleCollisionsAction(Action):
         bullets = cast["bullets"]
         walls = cast["walls"]
 
+        q = 0
         for bullet in bullets:
             if bullet.hurts_player():
                 if self._physics_service.is_collision(player, bullet):
@@ -31,8 +32,8 @@ class HandleCollisionsAction(Action):
 
                     # TODO add effects here like I frames or other things to trigger on hit
                     if not player.is_dodging():
-                        cast["bullets"].remove(bullet)
-                        continue
+                        cast["bullets"].pop(q)
+                        q -= 1
                     
 
             if bullet.hurts_enemies():
@@ -46,7 +47,8 @@ class HandleCollisionsAction(Action):
                         # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
                         if bullet in cast["bullets"]:
-                            cast["bullets"].remove(bullet)
+                            cast["bullets"].pop(q)
+                            q -= 1
 
                 
                     if enemy.get_health() <= 0:
@@ -55,7 +57,15 @@ class HandleCollisionsAction(Action):
             
             for wall in walls:
                 if self._physics_service.is_collision(wall, bullet):
-                    cast["bullets"].remove(bullet)
+                    cast["bullets"].pop(q)
+                    q -= 1
+            
+            if bullet.get_range() == 0:
+                cast["bullets"].pop(q)
+                q -= 1
+
+            q += 1
+
 
 
         # balls = cast["balls"]

@@ -21,6 +21,9 @@ class HandleWallsAction(Action):
                 
                 new_pos = player.get_position().add(short_side)#.scale(100))
                 player.set_position(new_pos)
+                player.set_is_colliding_wall(True)
+            else:
+                player.set_is_colliding_wall(False)
 
 
             for enemy in enemies:

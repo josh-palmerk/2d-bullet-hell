@@ -27,6 +27,17 @@ class Bullet(Actor):
         self._damage = gb.DEFAULT_BULLET_DAMAGE
         self._color = constants.BULLET_COLOR
         self._velocity = Point(0, 0)
+        self._range = 100
+
+    def get_range(self):
+        return self._range
+
+    def set_range(self, value):
+        self._range = value
+
+    def decrement_range(self):
+        """ just -= 1 """
+        self._range -= 1
 
     def hurts_player(self):
         return self._hurts_player

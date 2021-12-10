@@ -26,6 +26,20 @@ class Player(Person):
         self._is_dodging = False
         self._is_controllable = True
         # self._target = Point(0, 0)
+        self._previous_position = self._position
+        self._is_colliding_wall = False
+
+    def set_is_colliding_wall(self, tf):
+        self._is_colliding_wall = tf
+
+    def get_is_colliding_wall(self):
+        return self._is_colliding_wall
+
+    def get_previous_position(self):
+        return self._previous_position
+
+    def set_previous_position(self, point):
+        self._previous_position = point
 
     def is_controllable(self):
         return self._is_controllable

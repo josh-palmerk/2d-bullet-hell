@@ -13,10 +13,12 @@ class MoveActorsAction(Action):
     def execute(self, cast):
 
         for actor in cast["player"]:
+            actor.set_previous_position(actor.get_position())
             actor.move_next()
         
         for actor in cast["bullets"]:
             actor.move_next()
+            actor.decrement_range()
 
         for actor in cast["enemies"]:
             actor.move_next()

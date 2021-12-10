@@ -34,13 +34,7 @@ class Director:
             self._cue_action("update")
             self._cue_action("output")
 
-            # TODO: Add some logic like the following to handle game over conditions
-            if self._cast["player"][0].get_health() <= 0:
-                print("You ran out of health!\nGame over!")
-                self._keep_playing = False
-
-            if len(self._cast["enemies"]) == 0:
-                print("You cleared all the enemies!\nYou win!!")
+            if self._cast["keep_playing"][0].get_counter() <= 0:
                 self._keep_playing = False
 
             if raylibpy.window_should_close():
@@ -55,3 +49,7 @@ class Director:
         """ 
         for action in self._script[tag]:
             action.execute(self._cast)
+    
+    def stop_playing(self):
+        """ Ends the game loop by setting self._keep_playing to False."""
+        self._keep_playing = False
