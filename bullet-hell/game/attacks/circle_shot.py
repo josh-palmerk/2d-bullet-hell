@@ -30,6 +30,7 @@ class CircleShot(Attack):
         for angle in degrees: 
             shot = Bullet(self._hurt)
             shot.set_position(attacker.get_center_position())
+            shot.set_range(gb.CIRCLE_SHOT_RANGE)
             shot_vel = shot.vect_to_target(attacker.get_target(), attacker.get_bullet_speed())
             shot_vel = shot.adjust_vector(shot_vel, angle, attacker.get_bullet_speed())
             shot.set_velocity(shot_vel)    

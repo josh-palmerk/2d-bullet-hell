@@ -14,7 +14,6 @@ class ControlActorsAction(Action):
 
     def execute(self, cast):
         player = cast["player"][0]
-        camera = cast["camera"][0]
 
         if player.is_controllable():
             direction = self._input_service.get_direction()

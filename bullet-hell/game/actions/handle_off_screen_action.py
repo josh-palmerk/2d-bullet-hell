@@ -26,12 +26,3 @@ class HandleOffScreenAction(Action):
         if origin.get_quadrant(player.get_position()) != 1:
             player.set_position(origin)
 
-    # def bounce_horizontal(self, point):
-    #     """ Returns Point() with x velocity flipped """
-    #     new = Point((point.get_x() * -1), point.get_y())
-    #     return new
-
-    # def bounce_vertical(self, point):
-    #     """ Returns Point() with y velocity flipped """
-    #     new = Point(point.get_x(), (point.get_y() * -1))
-    #     return new

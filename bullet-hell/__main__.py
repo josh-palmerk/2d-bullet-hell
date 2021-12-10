@@ -56,14 +56,14 @@ def main():
     player.set_position(Point(50, 50))
     cast["player"].append(player)
 
-    player_pos = player.get_center_position()
+    # player_pos = player.get_center_position()
 
-    camera = raylibpy.Camera2D()
-    cam_target = raylibpy.Vector2(player_pos.get_x(), player_pos.get_y())
-    camera.target = cam_target
-    camera.zoom = 1.5
-    camera.offset = raylibpy.Vector2((constants.MAX_X / 2), (constants.MAX_Y / 2))
-    cast["camera"].append(camera)
+    # camera = raylibpy.Camera2D()
+    # cam_target = raylibpy.Vector2(player_pos.get_x(), player_pos.get_y())
+    # camera.target = cam_target
+    # camera.zoom = 1.5
+    # camera.offset = raylibpy.Vector2((constants.MAX_X / 2), (constants.MAX_Y / 2))
+    # cast["camera"].append(camera)
 
     enemy1 = Enemy()
     enemy1.set_position(Point(500, 500))

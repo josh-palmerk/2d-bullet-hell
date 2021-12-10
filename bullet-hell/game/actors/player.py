@@ -17,9 +17,9 @@ class Player(Person):
         self._health = gb.PLAYER_HEALTH
         self._color = constants.PLAYER_COLOR
         
-        #self._attack_1 = SingleShot("e")
+        self._attack_1 = SingleShot("e")
         #self._attack_1 = SawedOffShot("e")
-        self._attack_1 = CircleShot("e")
+        #self._attack_1 = CircleShot("e")
 
         self._bullet_speed = gb.PLAYER_BULLET_SPEED
         self._motion_1 = DodgeRoll(self)
