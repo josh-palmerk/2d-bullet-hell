@@ -10,7 +10,6 @@ class HandleWallsAction(Action):
     def execute(self, cast):
         player = cast["player"][0]
         enemies = cast["enemies"]
-        bullets = cast["bullets"]
         walls = cast["walls"]
 
         for wall in walls:

@@ -7,6 +7,8 @@ from game.attacks.dodge_roll import DodgeRoll
 from game.attacks.sawed_off_shot import SawedOffShot
 from game.attacks.circle_shot import CircleShot
 from game.attacks.sniper_shot import SniperShot
+from game.attacks.gatling_gun import GatlingGun
+from game.attacks.burst_fire import BurstFire
 
 class Player(Person):
     def __init__(self):
@@ -21,7 +23,9 @@ class Player(Person):
         #self._attack_1 = SingleShot("e")
         #self._attack_1 = SawedOffShot("e")
         #self._attack_1 = CircleShot("e")
-        self._attack_1 = SniperShot("e")
+        #self._attack_1 = SniperShot("e")
+        #self._attack_1 = GatlingGun("e")
+        self._attack_1 = BurstFire("e")
 
         self._bullet_speed = gb.PLAYER_BULLET_SPEED
         self._motion_1 = DodgeRoll(self)

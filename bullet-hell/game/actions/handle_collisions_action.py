@@ -22,7 +22,6 @@ class HandleCollisionsAction(Action):
         bullets = cast["bullets"]
         walls = cast["walls"]
 
-        q = 0
         for bullet in bullets:
             if bullet.hurts_player():
                 if self._physics_service.is_collision(player, bullet):
@@ -32,8 +31,8 @@ class HandleCollisionsAction(Action):
 
                     # TODO add effects here like I frames or other things to trigger on hit
                     if not player.is_dodging():
-                        cast["bullets"].pop(q)
-                        q -= 1
+                        if bullet in cast["bullets"]:
+                            cast["bullets"].remove(bullet)
                     
 
             if bullet.hurts_enemies():
@@ -47,21 +46,17 @@ class HandleCollisionsAction(Action):
                         # if bullet has pierce dont pop it?? potential feature. would need to be "off" for a little bit tho
                         # for one-hit validation with pierce and such you would need to have every bullet have a list of what it's hit
                         if bullet in cast["bullets"]:
-                            cast["bullets"].pop(q)
-                            q -= 1
+                            cast["bullets"].remove(bullet)
 
-                
                     if enemy.get_health() <= 0:
-                        cast["enemies"].remove(enemy)
-                        continue
+                        if enemy in cast["enemies"]:
+                            cast["enemies"].remove(enemy)
             
             for wall in walls:
                 if self._physics_service.is_collision(wall, bullet):
-                    cast["bullets"].pop(q)
-                    q -= 1
+                    if bullet in cast["bullets"]:
+                        cast["bullets"].remove(bullet)
             
             if bullet.get_range() <= 0:
-                cast["bullets"].pop(q)
-                q -= 1
-
-            q += 1
+                if bullet in cast["bullets"]:
+                    cast["bullets"].remove(bullet)
