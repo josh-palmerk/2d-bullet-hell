@@ -35,8 +35,10 @@ from game.actions.update_movements_action import UpdateMovementsAction
 from game.actions.handle_walls_action import HandleWallsAction
 from game.actions.game_events_action import GameEventsAction
 
-
+""" Levels """
 from game.levels.wall_configs.screenbox import ScreenBox
+from game.levels.wall_configs.sandbox_wallconfig import SandboxWallConfig
+
 
 def main():
 
@@ -103,9 +105,10 @@ def main():
     cast["walls"].append(wall_1)
 
 
-    screenbox = ScreenBox()
-    screenbox.create_walls(cast)
-
+    # screenbox = ScreenBox()
+    # screenbox.create_walls(cast)
+    sandbox = SandboxWallConfig()
+    sandbox.create_walls(cast)
 
     health_board = Actor()
     health_board.set_text(str(cast["player"][0].get_health()))
