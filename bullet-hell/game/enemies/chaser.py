@@ -7,8 +7,7 @@ class Chaser(Enemy):
     def __init__(self):
         super().__init__()
         self._movement_speed = gb.CHASER_MOVE_SPEED
+        self._health = gb.CHASER_HEALTH
 
     def roll_attack_chance_1(self):
         return False #chaser just does contact damage
-
-    # def do_movement_pattern(self):

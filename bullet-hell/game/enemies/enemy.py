@@ -30,13 +30,15 @@ class Enemy(Person):
         do_movement_pattern
         make_target
         make_movement_target"""
-        self.roll_attack_chance_1()
+        self.roll_attack_chance_1(player)
         self.make_movement_target(player)
         self.make_target(player)
         self.do_movement_pattern()
 
 
-    def roll_attack_chance_1(self):
+    def roll_attack_chance_1(self, player):
+        #TODO add range logic to only attack if within a certain distance
+        # ACTUALLY maybe add that in make_decisions
         if randint(0, self._attack_chance) == 0:
             self._is_attacking_1 = True
 
