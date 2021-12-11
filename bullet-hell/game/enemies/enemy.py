@@ -22,6 +22,18 @@ class Enemy(Person):
         self._attack_1 = SawedOffShot("p")
         self._attack_chance = gb.ENEMY_ATTACK_CHANCE
         self._bullet_speed = gb.ENEMY_BULLET_SPEED
+        self._movement_target = self._target
+
+    def make_decisions(self, player):
+        """ Calls the following:
+        roll_attack_chance_1
+        do_movement_pattern
+        make_target
+        make_movement_target"""
+        self.roll_attack_chance_1()
+        self.make_movement_target(player)
+        self.make_target(player)
+        self.do_movement_pattern()
 
 
     def roll_attack_chance_1(self):
@@ -29,7 +41,16 @@ class Enemy(Person):
             self._is_attacking_1 = True
 
     def do_movement_pattern(self):
-        self._velocity = self.vect_to_target(self._target, self._movement_speed)
+        """Defaults to crow flying to movement_target"""
+        self._velocity = self.vect_to_target(self._movement_target, self._movement_speed)
 
+    def make_target(self, player):
+        """make attack target using player position
+        defaults to just being the actual player position"""
+        self._target = player.get_center_position()
 
+    def make_movement_target(self, player):
+        """make movement target using player position
+        defaults to just being the actual player position"""
+        self._movement_target = player.get_position()
 # TODO add abstract do_attack_pattern and do_movement_pattern

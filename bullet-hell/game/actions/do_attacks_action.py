@@ -12,14 +12,7 @@ class DoAttacksAction(Action):
 
         if self.determine_attack_1(player):
             player.get_attack_1().update(cast, player)
-        player_pos = player.get_center_position()
         for enemy in enemies:
-
-            if isinstance(enemy, Dummy): #dummy should target just one consistent direction
-                    enemy.set_target(Point(enemy.get_position().get_x() + 5, enemy.get_position().get_y()))
-            else:
-                enemy.set_target(player_pos) 
-
             if self.determine_attack_1(enemy):
                 enemy.roll_attack_chance_1()
                 enemy.get_attack_1().update(cast, enemy)

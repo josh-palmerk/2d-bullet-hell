@@ -12,4 +12,4 @@ class UpdateMovementsAction(Action):
             player.get_motion_1().update()
 
         for enemy in cast["enemies"]:
-            enemy.do_movement_pattern()
+            enemy.make_decisions(player)

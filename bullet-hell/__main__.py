@@ -16,6 +16,7 @@ from game.actors.player import Player
 from game.actors.bullet import Bullet
 from game.enemies.enemy import Enemy
 from game.enemies.dummy import Dummy
+from game.enemies.chaser import Chaser
 from game.actors.wall import Wall
 
 """ Services """
@@ -83,26 +84,9 @@ def main():
     dummy1.set_position(Point(300, 700))
     cast["enemies"].append(dummy1)
 
-
-    test_bullet = Bullet("p")
-    test_bullet.set_position(Point(100, 100))
-    test_bullet.set_velocity(Point(1, 0))
-    cast["bullets"].append(test_bullet)
-    test_bullet2 = Bullet("p")
-    test_bullet2.set_position(Point(200, 200))
-    test_bullet2.set_velocity(Point(.5, 0))
-    cast["bullets"].append(test_bullet2)
-    test_bullet3 = Bullet("p")
-    test_bullet3.set_position(Point(300, 300))
-    test_bullet3.set_velocity(Point(.25, 0))
-    cast["bullets"].append(test_bullet3)
-
-
-    wall_1 = Wall() # test wall
-    wall_1.set_position(Point(400, 300))
-    wall_1.set_width(100)
-    wall_1.set_height(100)
-    cast["walls"].append(wall_1)
+    chaser1 = Chaser()
+    chaser1.set_position(Point(1920, 1080))
+    cast["enemies"].append(chaser1)
 
 
     # screenbox = ScreenBox()
