@@ -39,7 +39,7 @@ from game.actions.game_events_action import GameEventsAction
 """ Levels """
 from game.levels.wall_configs.screenbox import ScreenBox
 from game.levels.wall_configs.sandbox_wallconfig import SandboxWallConfig
-
+from game.levels.enemy_configs.sandbox_enemyconfig import SandboxEnemyConfig
 
 def main():
 
@@ -72,27 +72,31 @@ def main():
     enemy1.set_position(Point(500, 500))
     #cast["enemies"].append(enemy1)
 
-    enemy2 = Enemy()
-    enemy2.set_position(Point(1200, 750))
-    cast["enemies"].append(enemy2)
+    # enemy2 = Enemy()
+    # enemy2.set_position(Point(1200, 750))
+    # cast["enemies"].append(enemy2)
 
-    enemy3 = Enemy()
-    enemy3.set_position(Point(1800, 500))
-    cast["enemies"].append(enemy3)
+    # enemy3 = Enemy()
+    # enemy3.set_position(Point(1800, 500))
+    # cast["enemies"].append(enemy3)
 
-    dummy1 = Dummy()
-    dummy1.set_position(Point(300, 700))
-    cast["enemies"].append(dummy1)
+    # dummy1 = Dummy()
+    # dummy1.set_position(Point(300, 700))
+    # cast["enemies"].append(dummy1)
 
-    chaser1 = Chaser()
-    chaser1.set_position(Point(1920, 1080))
-    cast["enemies"].append(chaser1)
+    # chaser1 = Chaser()
+    # chaser1.set_position(Point(1920, 1080))
+    # cast["enemies"].append(chaser1)
 
 
     # screenbox = ScreenBox()
     # screenbox.create_walls(cast)
-    sandbox = SandboxWallConfig()
-    sandbox.create_walls(cast)
+    sandbox_walls = SandboxWallConfig()
+    sandbox_walls.create_walls(cast)
+
+    sandbox_enemies = SandboxEnemyConfig()
+    sandbox_enemies.create_enemies(cast)
+
 
     health_board = Actor()
     health_board.set_text(str(cast["player"][0].get_health()))

@@ -42,9 +42,8 @@ class SniperShot(Attack):
         """
         shot = Bullet(self._hurt)
         shot.set_position(attacker.get_center_position())
-        shot.set_range(gb.SINGLE_SHOT_RANGE)
+        shot.set_range(gb.SNIPER_SHOT_RANGE)
         shot_vel = shot.vect_to_target(attacker.get_target(), gb.SNIPER_SHOT_SPEED)
-        # shot_vel = shot.adjust_vector(shot_vel, 45, attacker.get_bullet_speed())
         shot.set_velocity(shot_vel)    
 
         shot.set_damage(gb.SNIPER_SHOT_DAMAGE)

@@ -9,5 +9,5 @@ class Chaser(Enemy):
         self._movement_speed = gb.CHASER_MOVE_SPEED
         self._health = gb.CHASER_HEALTH
 
-    def roll_attack_chance_1(self):
+    def roll_attack_chance_1(self, player):
         return False #chaser just does contact damage

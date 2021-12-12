@@ -14,7 +14,7 @@ class DoAttacksAction(Action):
             player.get_attack_1().update(cast, player)
         for enemy in enemies:
             if self.determine_attack_1(enemy):
-                enemy.roll_attack_chance_1()
+                enemy.roll_attack_chance_1(player)
                 enemy.get_attack_1().update(cast, enemy)
 
         # if self.determine_attack_1(player):
