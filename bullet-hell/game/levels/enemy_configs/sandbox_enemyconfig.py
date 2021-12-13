@@ -21,7 +21,7 @@ class SandboxEnemyConfig(EnemyConfig):
 
 
         captain1 = Captain()
-        captain1.set_position(Point(500, 600))
+        captain1.set_position(Point(1100, 600))
         cast["enemies"].append(captain1)
 
         gatler1 = Gatler()
@@ -33,10 +33,10 @@ class SandboxEnemyConfig(EnemyConfig):
         cast["enemies"].append(shocker1)
 
         coward1 = Coward()
-        coward1.set_position(Point(700, 500))
+        coward1.set_position(Point(100, 200))
         cast["enemies"].append(coward1)
 
         chaser1 = Chaser()
-        chaser1.set_position(Point(600, 600))
+        chaser1.set_position(Point(1400, 800))
         cast["enemies"].append(chaser1)
 

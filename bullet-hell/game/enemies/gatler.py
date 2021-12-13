@@ -10,3 +10,8 @@ class Gatler(Enemy):
         self._attack_1 = GatlingGun("p")
         self._health = gb.GATLER_HEALTH
         self._movement_speed = gb.GATLER_MOVE_SPEED
+        self._attack_chance = 5
+
+    # def roll_attack_chance_1(self, player):
+    #     if randint(0, self._attack_chance) == 0:
+    #         self._is_attacking_1 = True

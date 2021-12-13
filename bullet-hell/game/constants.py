@@ -51,6 +51,7 @@ DEFAULT_SQUARE_SIZE = 20
 DEFAULT_FONT_SIZE = 20
 DEFAULT_TEXT_OFFSET = 4
 
+IMAGE_WALL_1 = os.path.join(os.getcwd(), "./bullet-hell/assets/brickwall.jpeg")
 # IMAGE_BRICK_1 = os.path.join(os.getcwd(), "./batter/assets/brick-3.png")
 # IMAGE_BRICK_2 = os.path.join(os.getcwd(), "./batter/assets/brick-4.png")
 
